@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "netzanmeldung-excel-sync"
+version = "0.1.0"
+description = "Bereinigter Excel-Sync fuer Netzanmeldungslisten mit synthetischem Demo-Modus."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE.md" }
+dependencies = [
+    "openpyxl>=3.1,<4.0",
+    "pandas>=2.1,<4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0,<10.0",
+]
+
+[project.scripts]
+netzanmeldung-excel-sync = "netzanmeldung_excel_sync.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"netzanmeldung_excel_sync.sample_data" = ["*.csv"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
